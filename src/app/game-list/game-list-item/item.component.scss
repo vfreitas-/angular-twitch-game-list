@@ -1,0 +1,52 @@
+@import "~@scssconf/mixins.scss";
+
+:host {
+    position: relative;
+
+    width: 272px;
+    height: 380px;
+    margin: 15px 10px;
+
+    background-color: #fff;
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),
+        0 6px 20px 0 rgba(0,0,0,0.19);
+
+    transition: all .4s ease;
+
+    & .game-item {
+        display: block;
+        height: inherit;
+        width: inherit;
+
+        &__title {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+
+            height: 60px;
+            width: inherit;
+            padding: 5px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: rem(17px);
+
+            color: #fff;
+            background-color: rgba(126, 92, 191, 0.75);
+
+            & span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    &:hover {
+        box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),
+            0 6px 20px 0 rgba(0,0,0,0.19);
+        transform: translateY(-8px);
+    }
+}

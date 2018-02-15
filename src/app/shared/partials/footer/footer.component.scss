@@ -1,0 +1,12 @@
+@import "~@scssconf/vars.scss";
+
+.footer {
+    height: 40px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    color: #fff;
+    background-color: $color-primary--base;
+}

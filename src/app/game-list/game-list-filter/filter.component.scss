@@ -1,0 +1,16 @@
+.game-item {
+    width: 272px;
+    height: 380px;
+    margin: 15px 10px;
+
+    flex-basis: 0 0 300px;
+
+    background-color: #fff;
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),
+        0 6px 20px 0 rgba(0,0,0,0.19);
+
+    &__link {
+        height: inherit;
+        width: inherit;
+    }
+}

@@ -1,0 +1,28 @@
+@import "~@scssconf/vars.scss";
+
+@function rem($pixels, $base: $font-size--base) {
+    @return ($pixels / $base) * 1rem;
+}
+
+@mixin media-q ($viewport, $type: max-width) {
+    @media screen and (#{$type}: screen(#{$viewport})) { @content; }
+}
+
+@function screen($size) {
+    @return getValue($viewports, $size);
+}
+
+@function getValue($map, $key) {
+    @return map-get($map, $key);
+}
+
+@mixin visually-hidden() {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}

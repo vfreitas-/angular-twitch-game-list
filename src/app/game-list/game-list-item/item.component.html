@@ -1,0 +1,8 @@
+<a class="game-item"
+    [routerLink]="['/game', game._id]"
+    [style.background-image]="'url(' + game.box.large + ')'"
+>
+    <div class="game-item__title">
+        <span>{{ game.name }}</span>
+    </div>
+</a>
