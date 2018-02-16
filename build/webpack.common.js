@@ -2,21 +2,15 @@ const webpack = require('webpack')
     , { resolve } = require('./utils')
 
 const HtmlWebpackPlugin     = require('html-webpack-plugin')
-    , ExtractTextPlugin     = require('extract-text-webpack-plugin')
-
-    // TODO: Add to dev build only
-    , BundleAnalyzerPlugin  = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-    , DashboardPlugin = require('webpack-dashboard/plugin')
 
 const postcssConfig = require('./config/postcss.config')
-    
 
 const vendorIgnore = [
     'core.js'
 ]
 
 module.exports = {
-    devtool: 'inline-source-map',
+    devtool: 'cheap-module-eval-source-map',
 
     entry: {
         vendor: Object.keys(require('../package').dependencies)
@@ -28,7 +22,8 @@ module.exports = {
 
     output: {
         path: resolve('dist'),
-        filename: '[name].js',
+        publicPath: '/',
+        filename: '[name].js'
     },
 
     resolve: {
@@ -111,8 +106,12 @@ module.exports = {
 
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: [ 'app', 'vendor', 'polyfills' ]
+            names: ['vendor', 'polyfills'],
+            minChunks: Infinity
         }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: [ 'app', 'vendor', 'polyfills' ]
+        // }),
 
         new HtmlWebpackPlugin({
             template: resolve('index.html'),
@@ -121,9 +120,6 @@ module.exports = {
             path: resolve('dist'),
             hash: true
         }),
-
-        // new BundleAnalyzerPlugin(),
-        new DashboardPlugin({ port: 3001 }),
 
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)@angular/,
