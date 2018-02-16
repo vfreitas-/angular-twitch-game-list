@@ -86,3 +86,20 @@ h3 { font-size: 1.75rem; }
 h4 { font-size: 1.25rem;}
 h5 { font-size: 1rem; }
 h6 { font-size: 0.75rem; }
+
+@keyframes loading {
+    0% {
+        svg path {
+            fill: black;
+        }
+
+        transform: scale(1) rotate('0deg');
+    }
+    100% {
+        svg path {
+            fill: $color-primary--base;
+        }
+
+        transform: scale(1.2) rotate('30deg');
+    }
+}

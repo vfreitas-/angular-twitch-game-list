@@ -1,0 +1,10 @@
+@import "~@scssconf/vars.scss";
+@import "~@scssconf/mixins.scss";
+
+.game-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}

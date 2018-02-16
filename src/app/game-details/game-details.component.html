@@ -1,5 +1,15 @@
-<div class="game-list">
+<div class="game-details" *ngIf="game">
 
-    Game 1111
+    <button (click)="onBack()" class="game-details__back"> <-- Back</button>
 
+    <div class="game-details__image">
+        <img *ngIf="game.box" [src]="game.box.large">
+    </div>
+    <div class="game-details__content">
+        <h3>{{ game.name }}</h3>
+        
+        <p>{{ game.viewers }}</p>
+        <p>{{ game.channels }}</p>
+        <p>{{ game.popularity }}</p>
+    </div>
 </div>

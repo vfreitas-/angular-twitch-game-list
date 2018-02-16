@@ -1,16 +1,18 @@
 <div>
-    <game-list-filter></game-list-filter>
+    <div class="filters">
+        <game-list-filter (filterUpdated)="onFilterUpdate($event)"></game-list-filter>
+        <game-list-search (textUpdated)="onSearchUpdate($event)"></game-list-search>
+    </div>
     <div class="game-list">
-    
-    
+
         <game-list-item *ngFor="let game of gameList" 
             [game]="game"
         >
         </game-list-item>
-    
-        <svg id="twitch" viewBox="0 0 128 134" width="100%" height="200px">
+    </div>
+    <div [hidden]="!loading" class="game-list__loader">
+        <svg viewBox="0 0 128 134">
             <path d="m9 0-9 23v94h32v17h18l17-17h26l35-35v-82zm107 76-20 20h-32l-17 17v-17h-27v-84h96zm-20-41v35h-12v-35zm-32 0v35h-12v-35z" clip-rule="evenodd" rill-rule="evenodd"></path>
-        
         </svg>
     </div>
 </div>

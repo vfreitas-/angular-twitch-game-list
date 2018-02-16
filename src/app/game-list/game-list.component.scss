@@ -1,3 +1,14 @@
+@import "~@scssconf/vars.scss";
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 20px 0;
+    padding: 15px;
+}
+
 .game-list {
     display: flex;
     justify-content: center;
@@ -5,4 +16,37 @@
     flex-wrap: wrap;
 
     padding: 15px;
+
+    &__loader {
+        width: 60px;
+        margin: 10px auto;
+
+        svg {
+            height: 60px;
+
+            path {
+                animation: app-loading-path 1s ease infinite forwards;
+            }
+        }
+
+        animation: app-loading 1s ease infinite forwards;
+    }
+}
+
+@keyframes app-loading {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(10deg);
+    }
+}
+
+@keyframes app-loading-path {
+    0% {
+        fill: black;
+    }
+    50% {
+        fill: $color-primary--base;
+    }
 }

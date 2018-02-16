@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common'
 
 import { GameListComponent } from './game-list.component'
 import { GameListItemComponent } from './game-list-item/item.component'
-import { GameListFilterComponent } from './game-list-filter/filter.component'
+import { FilterComponent } from './filter/filter.component'
+import { SearchComponent } from './search/search.component'
 
 import { SharedModule } from '../shared';
 
@@ -19,7 +20,8 @@ const gameListRouting: ModuleWithProviders = RouterModule.forChild([
     declarations: [
         GameListComponent,
         GameListItemComponent,
-        GameListFilterComponent
+        FilterComponent,
+        SearchComponent
     ],
     imports: [
         SharedModule,

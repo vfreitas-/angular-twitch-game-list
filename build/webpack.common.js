@@ -24,7 +24,6 @@ module.exports = {
 
             app: './src/main.ts',
             polyfills: './src/polyfills.ts'
-            // styles: './src/global.scss',
     },
 
     output: {
@@ -51,18 +50,12 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                // use: [ 'awesome-typescript-loader?configFileName=config/tsconfig.json', 'angular2-template-loader' ]
                 use: [ 'awesome-typescript-loader', 'angular2-template-loader' ]
             },
             {
                 test: /\.html$/,
                 use: 'raw-loader'
             },
-            // {
-            //     test: /\.scss$/,
-            //     exclude: [ /node_modules/, helpers.root('src', 'global.scss') ],
-            //     use: [ 'to-string-loader', 'css-loader', 'sass-loader' ]
-            // },
             {
                 test: /\.css$/,
                 loader: 'to-string-loader!css-loader!postcss-loader'
@@ -97,22 +90,20 @@ module.exports = {
                     'sass-loader'
                 ]
             },
-            // {
-            //     test: /global\.scss$/,
-            //     use: ExtractTextPlugin.extract({
-            //         use: 'css-loader!sass-loader'
-            //     })
-            // },
-            // {
-            //     test: /\.(png|jpe?g|gif|svg|woff|woff2|otf|ttf|eot|ico)$/,
-            //     use: 'url-loader?name=assets/[name].[hash].[ext]'
-            // },
             {
                 test: /\.(eot|otf|ttf|woff|woff2)(\?v=[a-z0-9=\.]+)?$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
                     name: 'fonts/[name].[ext]?[hash]'
+                }
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'imgs/[name].[ext]?[hash]'
                 }
             }
         ]
@@ -132,6 +123,12 @@ module.exports = {
         }),
 
         // new BundleAnalyzerPlugin(),
-        new DashboardPlugin()
+        new DashboardPlugin({ port: 3001 }),
+
+        new webpack.ContextReplacementPlugin(
+            /angular(\\|\/)core(\\|\/)@angular/,
+            resolve('src'),
+            {}
+        )
     ]
 };

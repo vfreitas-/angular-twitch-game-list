@@ -1,0 +1,17 @@
+<div class="game-filter">
+    <label for="popularity">Popularity</label>
+    <input [(ngModel)]="filter"
+        (change)="filterChange()"
+        id="popularity"
+        value="popularity"
+        name="filter"
+        type="radio"/>
+
+    <label for="viewers">Viewers</label>
+    <input [(ngModel)]="filter"
+        (change)="filterChange()"
+        id="viewers"
+        value="viewers"
+        name="filter"
+        type="radio"/>
+</div>
