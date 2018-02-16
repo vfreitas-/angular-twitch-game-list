@@ -12,64 +12,12 @@ $font-weight--base: 500;
 
 $color-primary--base: #4D3778;
 
-$color-green--base                   :#54c616;
-$color-white--base                   :#FFF;
-$color-black--base                   :#000;
-$color-grey--base                    :#282828;
-$color-red--base                     :#ee000b;
-
-//-- colors components
-$color-black--header                 :#232B30;
-$color-dark-grey--header             :#161616;
-$color-grey--menu                    :#eeeeee;
-$color-grey--bread                   :#f6f6f6;
-$color-blue--base                    :#0089f2;
-$color-orange--details               :#F96959;
-$color-orange--base                  :#ed6254;
-$color-pink--base                    :#ff33cc;
-$color-cart--mobile                  :#f1f3fa;
-$color-border--mypage                :#D7D7D7;
-$color-text--mypage                  :#5C6E83;
-$color-bottom-buttons--mypage        :#F7F7F7;
-$color-table-row--mypage             :#F5F5F6;
-$color-progress-bg--mypage           :#FBFBFB;
-$color-track-order--on               :#92d931;
-$color-track-order--off              :#CCCCCC;
-
-//-- light and medium colors (variations)
-$color-light-grey--base              :#C4C4C4;
-$color-medium-grey--base             :#b7b7b7;
-$color-medium-grey                   :#9D9D9D;
-$color-light-grey-cat--sub           :#8d8d8d;
-$fourth-color-light                  : $color-medium-grey;
-$fourth-color-dark                   : $color-black--header;
-$color-red--details                  : $color-green--base;
-$color-details                       : $color-green--base;
-
-//-- dark colors (variations)
-$color-dark-grey--base               :#3f3f3f;
-$color-dark--grey                    :#191919;
-$color-dark-blue-btn                 :#526479;
-
-/* SIZES
-=============================================*/
-
-
-
-
-/* UTILS
-=============================================*/
-
 
 /* SCREEN SIZES
 =============================================*/
 
 $viewports: (
-    mc: 480px,
-    xs: 540px,
+    xs: 480px,
     sm: 768px,
-    md: 992px,
-    mg: 1050px,
-    lg: 1200px,
-    xg: 1400px
+    md: 1024px
 );

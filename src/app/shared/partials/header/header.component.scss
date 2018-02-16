@@ -1,7 +1,13 @@
 @import "~@scssconf/vars.scss";
 
+$height: 60px;
+
+:host {
+    flex-basis: $height;
+}
+
 .header {
-    height: 60px;
+    height: $height;
 
     display: flex;
     justify-content: space-around;

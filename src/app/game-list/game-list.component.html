@@ -9,6 +9,11 @@
             [game]="game"
         >
         </game-list-item>
+
+        <div *ngIf="isListEmpty" class="game-list__empty">
+            Não foram encontrados jogos com o texto <b>"{{ searchText }}"</b>!
+        </div>
+
     </div>
     <div [hidden]="!loading" class="game-list__loader">
         <svg viewBox="0 0 128 134">

@@ -1,7 +1,13 @@
 @import "~@scssconf/vars.scss";
 
+$height: 40px;
+
+:host {
+    flex-basis: $height;
+}
+
 .footer {
-    height: 40px;
+    height: $height;
 
     display: flex;
     justify-content: space-around;

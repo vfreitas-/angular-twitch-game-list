@@ -1,17 +1,19 @@
 <div class="game-filter">
-    <label for="popularity">Popularity</label>
     <input [(ngModel)]="filter"
         (change)="filterChange()"
         id="popularity"
+        class="game-filter__input"
         value="popularity"
         name="filter"
         type="radio"/>
+    <label class="game-filter__label" for="popularity">Popularity</label>
 
-    <label for="viewers">Viewers</label>
     <input [(ngModel)]="filter"
         (change)="filterChange()"
         id="viewers"
+        class="game-filter__input"
         value="viewers"
         name="filter"
         type="radio"/>
+    <label class="game-filter__label" for="viewers">Viewers</label>
 </div>

@@ -1,16 +1,50 @@
-.game-item {
-    width: 272px;
-    height: 380px;
-    margin: 15px 10px;
+@import "~@scssconf/mixins.scss";
 
-    flex-basis: 0 0 300px;
+:host {
+    @include media-q (xs) {
+        margin-bottom: 20px;
+    }
+}
 
-    background-color: #fff;
-    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),
-        0 6px 20px 0 rgba(0,0,0,0.19);
+.game-filter {
+    position: relative;
 
-    &__link {
-        height: inherit;
-        width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+    &__label {
+        margin: 0 10px;
+        padding: 10px;
+        border: 1px solid $color-primary--base;
+        border-radius: 3px;
+
+        font-size: rem(18px);
+
+        color: #fff;
+        background-color: $color-primary--base;
+
+        transition: color .4s ease,
+            background-color .4s ease;
+
+        cursor: pointer;
+
+        &:hover {
+            color: $color-primary--base;
+            background-color: #fff;
+        }
+    }
+
+    &__input {
+        @include visually-hidden();
+
+        &:checked {
+            & + .game-filter__label {
+                color: $color-primary--base;
+                background-color: #fff;
+                text-decoration: underline;
+            }
+        }
     }
 }

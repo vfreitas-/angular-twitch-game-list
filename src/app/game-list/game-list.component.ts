@@ -32,6 +32,12 @@ export class GameListComponent implements OnInit, AfterViewInit, OnDestroy {
         private resizeService: ResizeService
     ) {}
 
+    get isListEmpty (): boolean {
+        return (!this.gameList.length) &&
+            (!this.loading) &&
+            (this.searchText !== '')
+    }
+
     // LIFECYCLE HOOKS
     ngOnInit () {
         this.gameService.currentGames.subscribe(games => {

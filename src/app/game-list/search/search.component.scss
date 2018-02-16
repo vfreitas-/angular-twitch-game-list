@@ -1,2 +1,66 @@
 @import "~@scssconf/vars.scss";
 @import "~@scssconf/mixins.scss";
+
+.search {
+    position: relative;
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+
+        height: 25px;
+        width: 25px;
+
+        transform: translateY(-50%);
+
+        & path {
+            fill: #B39DDB;
+
+            transition: fill .4s ease;
+        }
+    }
+
+    &__input {
+        width: 100%;
+
+        padding: 12px;
+        padding-left: 30px;
+        border: 0;
+        border: 2px solid #B39DDB;
+        border-radius: 3px;
+        outline: none;
+
+        font-size: rem(18px);
+        color: #7E57C2;
+
+        transition: all .5s ease;
+        
+        &::placeholder {
+             color: #B39DDB;
+        }
+        
+        &:focus {
+            border-color: #5E35B1;
+            background-color: lighten(#EDE7F6, 30%);
+            animation: jump .3s ease-out forwards;
+
+            & + .search__icon {
+                path {
+                    fill: #5E35B1;
+                    animation: jump .3s ease-out;
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes jump {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.04);
+    }
+}

@@ -1,6 +1,10 @@
 @import "~@scssconf/vars.scss";
 @import "~@scssconf/mixins.scss";
 
+:host {
+    flex: auto;
+}
+
 .game-details {
     display: flex;
     justify-content: center;
