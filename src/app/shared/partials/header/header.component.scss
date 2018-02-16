@@ -10,8 +10,18 @@ $height: 60px;
     height: $height;
 
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 
+    padding: 0 20px;
+
     background-color: $color-primary--base;
+
+    &__logo {
+        height: 40px;
+
+        path {
+            fill: #fff;
+        }
+    }
 }

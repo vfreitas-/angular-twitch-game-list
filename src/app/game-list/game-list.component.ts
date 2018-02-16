@@ -63,7 +63,6 @@ export class GameListComponent implements OnInit, AfterViewInit, OnDestroy {
     }
  
     ngOnDestroy () {
-        console.log('sdads')
         this.rmScrollEvent()
     }
 
