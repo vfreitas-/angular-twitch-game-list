@@ -9,7 +9,6 @@ module.exports = merge(commonConfig, {
     
 
     plugins: [
-        new BundleAnalyzerPlugin(),
-        new DashboardPlugin({ port: 3001 })
+        new DashboardPlugin()
     ]
 })

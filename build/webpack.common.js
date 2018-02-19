@@ -32,13 +32,15 @@ module.exports = {
         ],
         alias: {
             '@shared': resolve('src/app/shared'),
-            '@scssconf': resolve('src/assets/sass/config')
+            '@scssconf': resolve('src/assets/sass/config'),
+            '@env': resolve('src/environments')
         }
     },
 
     devServer: {
         contentBase: resolve('dist'),
-        historyApiFallback: true
+        historyApiFallback: true,
+        open: true
     },
 
     module: {
@@ -105,13 +107,14 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.DefinePlugin({
+            APP_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
+        }),
+
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'polyfills'],
             minChunks: Infinity
         }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: [ 'app', 'vendor', 'polyfills' ]
-        // }),
 
         new HtmlWebpackPlugin({
             template: resolve('index.html'),

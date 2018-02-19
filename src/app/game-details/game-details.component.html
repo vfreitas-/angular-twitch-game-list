@@ -1,15 +1,26 @@
+<button (click)="onBack()" class="game-details__back">
+    <svg viewBox="0 0 24 24">
+        <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+    </svg> Voltar
+</button>
+
 <div class="game-details" *ngIf="game">
-
-    <button (click)="onBack()" class="game-details__back"> <-- Back</button>
-
     <div class="game-details__image">
-        <img *ngIf="game.box" [src]="game.box.large">
+        <img *ngIf="game.box" [src]="gameImage">
     </div>
-    <div class="game-details__content">
-        <h3>{{ game.name }}</h3>
+    <div class="game-details__content content">
+        <h3 class="content__title">{{ game.name }}</h3>
         
-        <p>{{ game.viewers }}</p>
-        <p>{{ game.channels }}</p>
-        <p>{{ game.popularity }}</p>
+        <p class="content__stats">
+            {{ game.popularity | number }} popularidade
+        </p>
+        <p *ngIf="game.viewers" class="content__stats">
+            {{ game.viewers | number }} espectadores
+        </p>
+        <p *ngIf="game.channels" class="content__stats">
+            {{ game.channels | number }} canais
+        </p>
+
+        <game-tabs [gameName]="game.name"></game-tabs>
     </div>
 </div>

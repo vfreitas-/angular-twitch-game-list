@@ -1,0 +1,53 @@
+@import "~@scssconf/vars.scss";
+@import "~@scssconf/mixins.scss";
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin-top: 15px;
+
+    &__header {
+        width: 100%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        border-bottom: 1px solid $color-primary--base;
+
+        &__item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: $color-primary--base;
+            font-size: rem(17px);
+
+            padding: 10px;
+            border: 1px solid $color-primary--base;
+            border-bottom: 0;
+
+            transition: color .4s ease,
+                background-color .4s ease;
+
+            cursor: pointer;
+
+            &:hover, &--active {
+                color: #fff;
+                background-color: $color-primary--base;
+            }
+
+            &--active {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__body {
+        padding: 15px;
+    }
+
+}

@@ -7,13 +7,13 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run server:dev",
-    "server:dev": "webpack-dev-server --inline --hot --config build/webpack.dev.js",
+    "server:dev": "webpack-dashboard -- webpack-dev-server --inline --hot --config build/webpack.dev.js",
     "server:prod": "lite-server --baseDir=\"./dist\"",
     "build:dev": "npm run clear && webpack --config build/webpack.dev.js --progress --display-error-details",
     "build:prod": "npm run clear && NODE_ENV=production webpack --config build/webpack.prod.js --progress --display-error-details",
     "ngrok": "ngrok http",
     "clear": "rimraf dist/",
-    "heroku-postbuild": "npm test && npm run build:prod"
+    "heroku-postbuild": "npm run build:prod"
   },
   "engines": {
     "node": ">= 6.9.0",
@@ -58,6 +58,7 @@
     "postcss-loader": "^2.1.0",
     "postcss-url": "^7.3.0",
     "raw-loader": "^0.5.1",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.1",
     "to-string-loader": "^1.1.5",

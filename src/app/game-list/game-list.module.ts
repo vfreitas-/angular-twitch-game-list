@@ -6,13 +6,15 @@ import { GameListComponent } from './game-list.component'
 import { GameListItemComponent } from './game-list-item/item.component'
 import { FilterComponent } from './filter/filter.component'
 import { SearchComponent } from './search/search.component'
+import { FixedFilterDirective } from './fixed-filter.directive'
 
-import { SharedModule } from '../shared';
+import { SharedModule } from '../shared'
 
 const gameListRouting: ModuleWithProviders = RouterModule.forChild([
     {
         path: '',
-        component: GameListComponent
+        component: GameListComponent,
+        data: { state: 'game-list' }
     }
 ])
 
@@ -21,7 +23,9 @@ const gameListRouting: ModuleWithProviders = RouterModule.forChild([
         GameListComponent,
         GameListItemComponent,
         FilterComponent,
-        SearchComponent
+        SearchComponent,
+        FixedFilterDirective
+        // LoaderComponent
     ],
     imports: [
         SharedModule,

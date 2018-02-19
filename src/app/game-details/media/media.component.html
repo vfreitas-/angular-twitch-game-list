@@ -1,0 +1,14 @@
+<div class="media">
+
+    <div *ngFor="let item of items" class="media__items">
+        <a class="media__img" [href]="item.url" target="_blank">
+            <img [src]="item.thumb" [alt]="item.title">
+        </a>
+        <div class="media__content">
+            <p>{{ item.host }}</p>
+            <p>{{ item.title }}</p>
+            <p>{{ item.viewers | number }} espectadores</p>
+        </div>
+    </div>
+
+</div>

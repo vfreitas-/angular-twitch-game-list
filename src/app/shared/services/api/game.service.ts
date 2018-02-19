@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpParams } from '@angular/common/http'
-import { Observable } from 'rxjs/Observable'
-import { ReplaySubject } from 'rxjs/ReplaySubject'
-import { Subject } from 'rxjs/Subject'
-import { BehaviorSubject } from 'rxjs/BehaviorSubject'
+import { HttpParams } from '@angular/common/http'
 
-import { map, flatMap } from 'rxjs/operators'
+import { Observable } from 'rxjs/Observable'
+import { BehaviorSubject } from 'rxjs/BehaviorSubject'
+import { map } from 'rxjs/operators'
 
 import { BaseService } from './base.service'
-import { Game } from '../models'
-
+import { Game } from '../../'
 
 @Injectable()
 export class GameService extends BaseService {
@@ -30,6 +27,8 @@ export class GameService extends BaseService {
     }
 
     getSearchedGame (query): Observable<Game[]> {
+        query = encodeURIComponent(query)
+
         const params = new HttpParams({
             fromObject: { query, type: 'suggest' }
         })
@@ -46,17 +45,17 @@ export class GameService extends BaseService {
     }
 
     private formatGame (games) {
-        games = games.map(game => {
-            if (game.game) {
-                const { viewers, channels } = game
+        games = games.map(tmpGame => {
+            if (tmpGame.game) {
+                const { viewers, channels, game } = tmpGame
 
                 return {
                     viewers,
                     channels,
-                    ...game.game,
+                    ...game,
                 }
             } else {
-                return game
+                return tmpGame
             }
         })
 

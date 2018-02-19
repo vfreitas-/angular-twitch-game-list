@@ -5,9 +5,13 @@ import {
     OnDestroy
 } from '@angular/core'
 
-import { GameService } from '../shared'
-import { Game } from '../shared'
-import { ResizeService } from '../shared/services/resize.service'
+import {
+    Game,
+    GameService,
+    ResizeService,
+    slideAnimation,
+    fadeInAnimation
+} from '../shared'
 
 @Component({
     selector: 'game-list',
@@ -15,17 +19,19 @@ import { ResizeService } from '../shared/services/resize.service'
     styleUrls: ['./game-list.component.scss'],
     providers: [
         ResizeService
-    ]
+    ],
+    animations: [ fadeInAnimation ],
+    host: { '[@fadeInAnimation]': '' }
 })
 
 export class GameListComponent implements OnInit, AfterViewInit, OnDestroy {
     gameList: Game[] = []
-    lastScrollPosition = 0
-    limit = null
-    loading = false
+    lastScrollPosition: number = 0
+    limit: number = 0
+    loading: boolean = false
     searchText: string = ''
     filter: string = 'popularity'
-    scrollHandler = this.onScroll.bind(this)
+    scrollHandler: EventListener = this.onScroll.bind(this)
 
     constructor (
         private gameService: GameService,
@@ -40,6 +46,11 @@ export class GameListComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // LIFECYCLE HOOKS
     ngOnInit () {
+        this.limit = this.resizeService.getLimit(window.innerWidth)
+        this.resizeService.width$.subscribe(limit => {
+            this.limit = limit
+        })
+
         this.gameService.currentGames.subscribe(games => {
             if (Array.isArray(games)) {
                 this.gameList = games
@@ -49,12 +60,8 @@ export class GameListComponent implements OnInit, AfterViewInit, OnDestroy {
             this.loading = false
         })
 
-        // this.resizeService.width.subscribe(limit => {
-        //     this.limit = limit
-        // })
-
         if (this.gameList.length == 0) {
-            this.gameService.getTopGames(0, this.resizeService.getLimit()).subscribe()
+            this.gameService.getTopGames(0, this.limit).subscribe()
         }
     }
 
@@ -91,7 +98,7 @@ export class GameListComponent implements OnInit, AfterViewInit, OnDestroy {
         if (percentage > 0.95) {
             this.loading = true
             this.gameService.getTopGames(
-                this.gameList.length, this.resizeService.getLimit()
+                this.gameList.length, this.limit
             ).subscribe()
         }
     }
@@ -104,12 +111,10 @@ export class GameListComponent implements OnInit, AfterViewInit, OnDestroy {
 
         if (searchText === '') {
             this.addScrollEvent()
-            this.gameService.getTopGames(0, this.resizeService.getLimit()).subscribe()
+            this.gameService.getTopGames(0, this.limit).subscribe()
         } else {
             this.rmScrollEvent()
-            this.gameService.getSearchedGame(
-                encodeURIComponent(searchText)
-            ).subscribe()
+            this.gameService.getSearchedGame(searchText).subscribe()
         }
     }
 

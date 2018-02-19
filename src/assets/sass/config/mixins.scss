@@ -26,3 +26,10 @@
     padding: 0;
     border: 0;
 }
+
+@mixin flex ($justify: center, $dir: row, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $dir;
+}

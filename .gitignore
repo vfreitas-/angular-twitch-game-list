@@ -2,7 +2,6 @@
 
 /dist
 src/environments/local.ts
-src/environments/production.ts
 
 
 # dependencies

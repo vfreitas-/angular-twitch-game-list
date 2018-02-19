@@ -1,0 +1,22 @@
+
+
+<div class="tabs">
+    <div class="tabs__header">
+
+        <div *ngFor="let tab of tabs"
+            class="tabs__header__item"
+            [ngClass]="{'tabs__header__item--active': activeTab === tab.id}"
+            (click)="setTab(tab.id)"
+        >
+            {{ tab.name }}
+        </div>
+    </div>
+
+    <div class="tabs__body">
+        <div *ngFor="let tab of tabs"
+            class="tabs__body__content"
+        >
+            <game-media *ngIf="(activeTab === tab.id)" [mediaType]="tab.id" [gameName]="gameName"></game-media>
+        </div>
+    </div>
+</div>

@@ -2,13 +2,82 @@
 @import "~@scssconf/mixins.scss";
 
 :host {
-    flex: auto;
+    display: block;
+    padding: 20px;
 }
 
 .game-details {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex();
 
-    padding: 20px;
+    margin-top: 15px;
+
+    @include media-q(sm) {
+        flex-direction: column;
+
+        &__image {
+            & img {
+                // max-width: 50vw;
+            }
+        }
+    }
+
+    &__image {
+        margin-bottom: 15px;
+    }
+
+    &__content {
+        margin-left: 20px;
+
+        @include media-q(sm) {
+            margin-left: 0;
+        }
+    }
+
+    &__back {
+        @include flex();
+        padding: 10px;
+        border: 1px solid $color-primary--base;
+        border-radius: 3px;
+
+        font-size: rem(18px);
+
+        color: #fff;
+        background-color: $color-primary--base;
+
+        transition: color .4s ease,
+            background-color .4s ease;
+
+        cursor: pointer;
+        
+        svg {
+            height: 20px;
+            width: 20px;
+
+            & path {
+                fill: #fff;
+            }
+        }
+
+        &:hover {
+            color: $color-primary--base;
+            background-color: #fff;
+
+            svg path {
+                fill: $color-primary--base;
+            }
+        }
+    }
+
+    .content {
+        align-self: flex-start;
+
+        &__title {
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        &__stats {
+            margin-bottom: 5px;
+        }
+    }
 }

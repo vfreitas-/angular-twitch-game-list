@@ -1,6 +1,12 @@
 @import "~@scssconf/vars.scss";
 @import "~@scssconf/mixins.scss";
 
+:host {
+    @include media-q(xs) {
+        width: 100%;
+    }
+}
+
 .search {
     position: relative;
 
@@ -24,7 +30,7 @@
     &__input {
         width: 100%;
 
-        padding: 12px;
+        padding: 10px;
         padding-left: 30px;
         border: 0;
         border: 2px solid #B39DDB;

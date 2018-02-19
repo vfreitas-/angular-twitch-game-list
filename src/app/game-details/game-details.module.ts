@@ -3,9 +3,12 @@ import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
 
 import { GameDetailsComponent } from './game-details.component'
+import { TabsComponent } from './tabs/tabs.component'
+import { MediaComponent } from './media/media.component'
 import { GameDetailsResolver } from './game-details-resolver.service'
 
 import { SharedModule } from '../shared/shared.module'
+import { NumberFormatPipe, VideosService, StreamsService } from '../shared'
 
 const gameDetailsRouting: ModuleWithProviders = RouterModule.forChild([
     {
@@ -13,7 +16,8 @@ const gameDetailsRouting: ModuleWithProviders = RouterModule.forChild([
         component: GameDetailsComponent,
         resolve: {
             game: GameDetailsResolver
-        }
+        },
+        data: { state: 'game-list' }
     }
 ])
 
@@ -24,9 +28,14 @@ const gameDetailsRouting: ModuleWithProviders = RouterModule.forChild([
     ],
     declarations: [
         GameDetailsComponent,
+        TabsComponent,
+        MediaComponent,
+        NumberFormatPipe
     ],
 
     providers: [
+        VideosService,
+        StreamsService,
         GameDetailsResolver
     ]
 })

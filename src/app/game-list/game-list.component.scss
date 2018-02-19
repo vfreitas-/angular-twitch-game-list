@@ -1,10 +1,6 @@
 @import "~@scssconf/vars.scss";
 @import "~@scssconf/mixins.scss";
 
-:host {
-    flex: auto;
-}
-
 .filters {
     display: flex;
     justify-content: space-between;
@@ -15,6 +11,29 @@
     @include media-q (xs) {
         flex-direction: column;
     }
+
+    &--fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+
+        width: 100%;
+        padding: 10px;
+
+        background-color: #fff;
+        box-shadow: 2px 2px 2px gainsboro;
+
+        animation: slide-down .4s ease-in-out forwards;
+
+        & game-list-filter {
+            @include media-q(xs) {
+                display: none;
+            }
+        }
+    }
+
+
 }
 
 .game-list {
@@ -56,5 +75,15 @@
     }
     50% {
         fill: $color-primary--base;
+    }
+}
+
+
+@keyframes slide-down {
+    0% {
+        transform: translateY(-100%);
+    }
+    50% {
+        transform: translateY(0);
     }
 }

@@ -15,6 +15,12 @@ export class GameDetailsComponent implements OnInit {
         private router: Router
     ) {}
 
+    get gameImage () {
+        return this.game.box.template
+            .replace('{width}', 400)
+            .replace('{height}', 600)
+    }
+
     ngOnInit() {
         this.route.data.subscribe(data => {
             if (!data.game || !data.game._id) {
