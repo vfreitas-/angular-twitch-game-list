@@ -8,7 +8,15 @@ import {
 
 export const slideAnimation = trigger('slideAnimation', [
     transition('* <=> *', [
-        query(':enter, :leave', [
+        query(':leave', [
+            style({
+                position: 'fixed',
+                width: '100%',
+                transform: 'translateX(0)'
+            })
+        ]),
+
+        query(':enter', [
             style({
                 position: 'fixed',
                 width: '100%',
