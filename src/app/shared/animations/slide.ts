@@ -14,7 +14,7 @@ export const slideAnimation = trigger('slideAnimation', [
                 width: '100%',
                 transform: 'translateX(0)'
             })
-        ]),
+        ], { optional: true }),
 
         query(':enter', [
             style({
