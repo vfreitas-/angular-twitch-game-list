@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators'
 @Injectable()
 export class ResizeService {
 
-    public width$: Observable<number>
+    private width$: Observable<number>
 
     constructor() {
         this.width$ = fromEvent(window, 'resize')
@@ -18,6 +18,10 @@ export class ResizeService {
                     return this.getLimit(innerWidth)
                 })
             )
+    }
+
+    get onResize () {
+        return this.width$
     }
 
     getLimit (width) {

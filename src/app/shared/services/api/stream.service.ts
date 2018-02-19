@@ -22,7 +22,6 @@ export class StreamsService extends BaseService {
     }
 
     private formatStreams (streams) {
-        console.log(streams)
         return streams.map(stream => {
             return {
                 title: stream.channel.status,

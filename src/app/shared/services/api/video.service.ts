@@ -22,7 +22,6 @@ export class VideosService extends BaseService {
     }
 
     private formatVideos (videos) {
-        console.log(videos)
         return videos.map(video => {
             return {
                 title: video.title,

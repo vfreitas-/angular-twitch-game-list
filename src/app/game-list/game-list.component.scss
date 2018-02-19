@@ -2,9 +2,7 @@
 @import "~@scssconf/mixins.scss";
 
 .filters {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex(space-between);
 
     padding: 20px;
 

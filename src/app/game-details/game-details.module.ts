@@ -14,10 +14,8 @@ const gameDetailsRouting: ModuleWithProviders = RouterModule.forChild([
     {
         path: 'game/:id',
         component: GameDetailsComponent,
-        resolve: {
-            game: GameDetailsResolver
-        },
-        data: { state: 'game-list' }
+        data: { state: 'game-details' },
+        resolve: { game: GameDetailsResolver }
     }
 ])
 

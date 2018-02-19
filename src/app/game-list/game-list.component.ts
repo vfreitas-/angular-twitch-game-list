@@ -47,7 +47,7 @@ export class GameListComponent implements OnInit, AfterViewInit, OnDestroy {
     // LIFECYCLE HOOKS
     ngOnInit () {
         this.limit = this.resizeService.getLimit(window.innerWidth)
-        this.resizeService.width$.subscribe(limit => {
+        this.resizeService.onResize.subscribe(limit => {
             this.limit = limit
         })
 

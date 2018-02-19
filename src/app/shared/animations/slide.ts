@@ -2,37 +2,34 @@ import {
     trigger,
     animate,
     style,
-    group,
+    query,
     transition
 } from '@angular/animations'
 
 export const slideAnimation = trigger('slideAnimation', [
-    transition(':enter', [
-        style({
-            transform: 'translateX(-100%)'
-        }),
-        animate('.5s ease-in-out', style({
-            transform: 'translateX(0%)'
-        }))
-    ]),
+    transition('* <=> *', [
+        query(':enter, :leave', [
+            style({
+                position: 'fixed',
+                width: '100%',
+                transform: 'translateX(-100%)'
+            }),
+        ], { optional:true }),
+  
+        query(':leave', [
+            animate('.4s ease',
+                style({
+                    transform: 'translateX(100%)'
+                })
+            )
+        ], { optional:true }),
 
-    transition(':leave', [
-        style({
-            transform: 'translateX(0%)'
-        }),
-        animate('.5s ease-in-out', style({
-            transform: 'translateX(100%)'
-        }))
+        query(':enter', [
+            animate('.4s ease',
+                style({
+                    transform: 'translateX(0)'
+                })
+            )
+        ], { optional:true })
     ])
-
-
-    // transition('* => *', [
-    //     query(':enter, :leave', style({
-    //         position: 'fixed',
-    //         width: '100%'
-    //     }), { optional: true }),
-    //     group([
-            
-    //     ])
-    // ])
 ])

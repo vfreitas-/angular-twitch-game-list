@@ -1,18 +1,26 @@
 @import "~@scssconf/vars.scss";
+@import "~@scssconf/mixins.scss";
 
 $height: 40px;
 
 :host {
+    z-index: 10;
     flex-basis: $height;
 }
 
 .footer {
-    height: $height;
+    @include flex();
 
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    height: $height;
 
     color: #fff;
     background-color: $color-primary--base;
+
+    a {
+        margin-left: 10px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }

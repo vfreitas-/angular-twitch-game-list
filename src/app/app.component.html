@@ -1,7 +1,7 @@
 <app-header></app-header>
 
-<main>
-    <router-outlet></router-outlet>
+<main [@slideAnimation]="getRouteAnimation(route)">
+    <router-outlet #route="outlet"></router-outlet>
 </main>
 
 <app-footer></app-footer>

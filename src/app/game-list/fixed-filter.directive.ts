@@ -22,7 +22,6 @@ export class FixedFilterDirective implements OnDestroy {
     }
 
     ngOnDestroy () {
-        console.log('on destroy')
         window.removeEventListener('scroll', this.scrollHandler)
     }
 
