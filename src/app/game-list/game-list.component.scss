@@ -29,6 +29,14 @@
                 display: none;
             }
         }
+
+        & + .game-list {
+            margin-top: 85px;
+
+            @include media-q(xs) {
+                margin-top: 150px;
+            }
+        }
     }
 
 
