@@ -13,12 +13,6 @@
 
     @include media-q(sm) {
         flex-direction: column;
-
-        &__image {
-            & img {
-                // max-width: 50vw;
-            }
-        }
     }
 
     &__image {
@@ -69,6 +63,7 @@
     }
 
     .content {
+        max-width: 500px;
         align-self: flex-start;
 
         &__title {

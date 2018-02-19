@@ -10,7 +10,18 @@ import { slideAnimation } from './shared'
 })
 
 export class AppComponent {
+
+    private isAnimationOn: boolean = false
+
     getRouteAnimation(outlet) {
         return outlet.activatedRouteData.state
+    }
+
+    animationStarted () {
+        this.isAnimationOn = true
+    }
+
+    animationDone (event) {
+        this.isAnimationOn = false
     }
 }

@@ -1,7 +1,10 @@
 <app-header></app-header>
 
-<main [@slideAnimation]="getRouteAnimation(route)">
+<main [@slideAnimation]="getRouteAnimation(route)" 
+    (@slideAnimation.done)="animationDone($event)"
+    (@slideAnimation.start)="animationStarted($event)"
+>
     <router-outlet #route="outlet"></router-outlet>
 </main>
 
-<app-footer></app-footer>
+<app-footer [hidden]="isAnimationOn"></app-footer>
