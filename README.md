@@ -16,7 +16,7 @@ And fill it with the needed variables.
 Then it will open your browser with the application and show a cool
 console dashboard with analytic about the webpack generated bundles.
 
-For production, just you can generate the production bundle using:
+For production, you can generate the production bundle using:
 
 `npm run build:prod`
 
